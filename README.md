@@ -12,7 +12,7 @@
 
 ## About the Project 
 
-Hawaii Liquidity Pool is a training project born to give me (and anyone who wants to contribute to the project) the possibility to learn Solidity (Defi, Ercs standards ...) and Hardhat, anyone can contribute adding by Defi, NFT functionality or improve one that already exists. You can create new tokens, or use existing ones to create new contracts and functions(tested with hardhat is better).
+Hawaii Liquidity Pool is a training project born to give me (and anyone who wants to contribute to the project) the possibility to learn Solidity (Defi, Ercs standards ...) and Hardhat, anyone can contribute adding by Defi functionality or improve one that already exists. You can create new tokens, or use existing ones to create new contracts and functions(tested with hardhat is better).
 
 ### Guide To Contribute :
 
