@@ -20,7 +20,7 @@ Convered Concepts until now :
 - erc20
 - primitive swap
 - buy erc20 tokens with eth 
-- liquidity pool (wip)
+- liquidity pool (By Just-Jam Sam Lin)
 
 
 **Any idea or contrinute is appreciated!**
