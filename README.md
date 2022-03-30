@@ -10,51 +10,26 @@
 </div>
 <br>
 
-
-
 ## About the Project 
 
 This project is born to give me (and anyone who wants to contribute to the project) the possibility to learn Solidity (Defi, Ercs standards ...) and Hardhat, anyone can contribute adding a Defi, NFT functionality or improve one that already exists. You can create new tokens, or use existing ones to create new contracts and functions(tested with hardhat is better).
 
-if you make a token, call it with a name of a Hawaiian city
+### Guide To Contribute :
 
-Convered Concepts until now :
+- if you create a token, call it with a name of a Hawaiian city
+- if you create a new functionalities that already exists (and you don't want to improve it) call your new functionalities in this way: "functionalityname_yourname".
+- add comment if needed.
+- follow the "contributing“ section in the readme.md.
+
+## Convered Concepts until now :
 - erc20 
 - primitive swap
 - buy erc20 tokens with eth 
 - erc20 liquidity pool 
 
-
-**Any idea or contrinute is appreciated!**
-
-
 ## Built With
 * [Solidity](https://docs.soliditylang.org/en/v0.8.13/) 
 * [Hardhat](https://hardhat.org/) 
-
-## Functionalities
-
-### Honululu and Volcano (ERC20)Token
-
-
-```solidity
-
-contract LuluToken is ERC20 {
-    constructor() ERC20("Honululu", "LULU") {
-        _mint(msg.sender, 100 ether);
-    }
-}
-
-
-contract VolcanoToken is ERC20 {
-    constructor() ERC20("Volcano", "VOLC") {
-        _mint(msg.sender, 100 ether);
-    }
-}
-
-  ```
----
-
 
 ## Getting Started with Hardhat 
 
@@ -97,6 +72,9 @@ Don't forget to give the project a star! Thanks again! ❤️
 
 ## Team
 
-Matteo Leonesi - [Github](https://github.com/MatteoLeonesi) - matteo.leonesi@gmail.com
+- Matteo Leonesi - [Github](https://github.com/MatteoLeonesi) - matteo.leonesi@gmail.com
+- Yuri Paoloni  - [Github](https://github.com/yuripaoloni)
+- Just-jam - [Github](https://github.com/Just-Jam)
+- Laks - [Github](https://github.com/Laks-Dcrypto)
 
 
