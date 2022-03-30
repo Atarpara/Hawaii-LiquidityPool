@@ -9,6 +9,7 @@ contract SwapErc20 {
     address ownerVulcano;
     IERC20 Honululu;
     address ownerHonululu;
+    address public owner;
 
     // token price for ETH
     uint256 public tokensPerEth = 100;
@@ -24,6 +25,12 @@ contract SwapErc20 {
         Honululu = IERC20(_Honululu);
         ownerVulcano = _ownerVulcano;
         ownerHonululu = _ownerHonululu;
+        owner = msg.sender;
+    }
+
+    modifier onlyOwner() {
+        require(msg.sender == owner, "You are not the owner");
+        _;
     }
 
     function swap(uint256 _amount1, uint256 _amount2) public {
@@ -61,10 +68,7 @@ contract SwapErc20 {
 
         // check if the Vendor Contract has enough amount of tokens for the transaction
         uint256 vendorBalance = Volcano.balanceOf(address(this));
-        require(
-            vendorBalance >= amountToBuy,
-            "Vendor contract has not enough tokens in its balance"
-        );
+        require(vendorBalance >= amountToBuy, "not enough tokens in balance");
 
         // Transfer token to the msg.sender
         bool sent = Volcano.transfer(msg.sender, amountToBuy);
@@ -82,7 +86,7 @@ contract SwapErc20 {
         uint256 vendorBalance = Honululu.balanceOf(address(this));
         require(
             vendorBalance >= amountToBuy,
-            "Vendor contract has not enough tokens in its balance"
+            "not enough tokens in its balance"
         );
 
         // Transfer token to the msg.sender
@@ -90,5 +94,16 @@ contract SwapErc20 {
         require(sent, "Failed to transfer token to user");
 
         return amountToBuy;
+    }
+
+    /**
+     *  Allow the owner of the contract to withdraw ETH
+     */
+    function withdraw() public onlyOwner {
+        uint256 ownerBalance = address(this).balance;
+        require(ownerBalance > 0, "not balance to withdraw");
+
+        (bool sent, ) = msg.sender.call{value: address(this).balance}("");
+        require(sent, "Failed");
     }
 }
