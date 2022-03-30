@@ -1,12 +1,12 @@
 <div align="center">
-   <h1 align="center">ERCs, Swap and Liquidity Pools</h3>
-   <h4 align="center">Learning Smart Contracts</h4> 
+   <h1 align="center">Hawaii Liquidity Pools</h3>
+   <h4 align="center">Studing Defi and Erc standards</h4> 
 </div>
 <br>
 <div align="center">
-  <a>
-    <img  border-radius= 50 src="" width="400" height="500">
-  </a>
+   
+   ![output-onlinepngtools](https://user-images.githubusercontent.com/38867931/160844411-3f11d20d-1a23-4de4-ac1b-8277e9dcf70a.png)
+
 </div>
 <br>
 <div align="center">
@@ -15,24 +15,20 @@
 
 </div>
 
- 
 
-## Project Roadmap (work in progress)
+## About the Project 
 
-<h6>Discalimer : This project is born to give me (and anyone who wants to contribute to the project) the possibility to learn Solidity and Hardhat</h6>
+This project is born to give me (and anyone who wants to contribute to the project) the possibility to learn Solidity (Defi, Ercs standards ...) and Hardhat, anyone can contribute adding a Defi, NFT functionality or improve one that already exists.
 
-Universal Vending Machine is a platform where user can interact earning 2 tokens (Screws and Bolts) ERC20 standards. UVM will be composed in different sections.
+Convered Concepts until now :
+- erc20
+- primitive swap
+- buy erc20 tokens with eth 
+- - liquidity pool (wip)
 
-**Any idea is appreciated!**
 
-### DeFi missions section:
-- user can carry out missions given by EVM (staking bolts or Screws) to earns nft or Screws and Bolts.
-- user can stake Screws to earns Bolts 
-- user can stake Bolts to earns Screws 
+**Any idea or contrinute is appreciated!**
 
-### NFT section: 
-- user can only earns nft making missions given by EVM, user can use nft for upgrade his equipment for make missions and earns Screws and Bolts faster.
-- nft could also be used for create "duels" beetween users . 
 
 ## Built With
 * [Solidity](https://docs.soliditylang.org/en/v0.8.13/) 
