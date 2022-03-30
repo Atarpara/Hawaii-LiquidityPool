@@ -5,7 +5,7 @@ import "@openzeppelin/contracts/utils/math/SafeMath.sol";
 
 pragma solidity ^0.8.4;
 
-contract LiquidityPool{
+contract LiquidityPool is ERC20{
     using SafeMath for uint256;
 
     IERC20 public immutable tokenA;
@@ -14,10 +14,13 @@ contract LiquidityPool{
     mapping(address => uint) public _balances;
     uint _totalSupply;
 
-    //constant price for testing: price = tokenA/tokenB
-    uint public price = 2;
-
-    constructor(address _tokenA, address _tokenB){
+    constructor(
+        address _tokenA,
+        address _tokenB,
+        string memory _name,
+        string memory _symbol
+    ) 
+    ERC20(_name, _symbol) {
         tokenA = IERC20(_tokenA);
         tokenB = IERC20(_tokenB);
     }
@@ -37,7 +40,6 @@ contract LiquidityPool{
     then: tokenA supply: tokenB supply = 2:1
     returns 1/2 = 0.5 */
     function getPriceRatio() public view returns (uint){
-        
         return tokenB.balanceOf(address(this)).mul(1e18).div(tokenA.balanceOf(address(this)));
     }
 
@@ -63,11 +65,36 @@ contract LiquidityPool{
         }
     }
 
-    function addLiquidity() public{
+    function addLiquidity(address _tokenA, uint _amountA, address _tokenB, uint _amountB) external{
+        require(
+            _tokenA == address(tokenA) && _tokenB == address(tokenB), 
+            "invalid token"
+        );
+
+        uint tokenPriceRatio = getPriceRatio();
+        //Check token ratio of tokenA/tokenB user deposited
+        require(
+            tokenPriceRatio == _amountA.mul(1e18).div(_amountB), 
+            "invalid token ratio"
+        );
+
+        tokenA.transfer(address(this), _amountA);
+        tokenB.transfer(address(this), _amountB);
+
+        uint lpTokenAmount;
+
+        if(totalSupply() == 0 ){
+            lpTokenAmount = _amountA;
+        }
+        else{
+            lpTokenAmount = _amountA.mul(totalSupply()).div(tokenA.balanceOf(address(this)));
+        }
+
+        _mint(msg.sender, lpTokenAmount);
 
     }
 
-    function removeLiquidity() public{
+    function removeLiquidity() external{
 
     }
 }
