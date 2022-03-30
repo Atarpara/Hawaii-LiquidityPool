@@ -16,11 +16,13 @@
 
 This project is born to give me (and anyone who wants to contribute to the project) the possibility to learn Solidity (Defi, Ercs standards ...) and Hardhat, anyone can contribute adding a Defi, NFT functionality or improve one that already exists. You can create new tokens, or use existing ones to create new contracts and functions(tested with hardhat is better).
 
+if you make a token, call it with a name of a Hawaiian city
+
 Convered Concepts until now :
-- erc20
+- erc20 
 - primitive swap
 - buy erc20 tokens with eth 
-- liquidity pool (By Just-Jam Sam Lin)
+- erc20 liquidity pool 
 
 
 **Any idea or contrinute is appreciated!**
