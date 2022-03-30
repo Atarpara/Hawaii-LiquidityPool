@@ -12,7 +12,7 @@ contract LiquidityPool is ERC20{
     IERC20 public immutable tokenB;
 
     mapping(address => uint) public _balances;
-    uint _totalSupply;
+    uint public product;
 
     constructor(
         address _tokenA,
@@ -26,14 +26,6 @@ contract LiquidityPool is ERC20{
     }
 
     /*--------VIEW FUNCTIONS--------*/
-
-    function getBalance(address _address) public view returns (uint){
-        return _balances[_address];
-    }
-
-    function getTotalSupply() public view returns (uint){
-        return _totalSupply;
-    }
 
     /*Returns price of tokenA/tokenB in wei
     If tokenA = $5, tokenB = $10
@@ -54,13 +46,13 @@ contract LiquidityPool is ERC20{
         if (_tokenIn == address(tokenA)){
             //Swap token A for B
             tokenA.transferFrom(msg.sender, address(this), _amountIn);
-            uint amountB =  tokenB.balanceOf(address(this)).mul(1e18).div(tokenA.balanceOf(address(this))).mul(_amountIn).div(1e18);
+            uint amountB =  product.div(tokenA.balanceOf(address(this)));
             tokenB.transfer(msg.sender, amountB);
         } 
         else {
             //Swap token B for A
             tokenB.transferFrom(msg.sender, address(this), _amountIn);
-            uint amountA =  tokenA.balanceOf(address(this)).mul(1e18).div(tokenB.balanceOf(address(this))).mul(_amountIn).div(1e18);
+            uint amountA =  product.div(tokenB.balanceOf(address(this)));
             tokenA.transfer(msg.sender, amountA);
         }
     }
@@ -71,30 +63,16 @@ contract LiquidityPool is ERC20{
             "invalid token"
         );
 
-        uint tokenPriceRatio = getPriceRatio();
-        //Check token ratio of tokenA/tokenB user deposited
-        require(
-            tokenPriceRatio == _amountA.mul(1e18).div(_amountB), 
-            "invalid token ratio"
-        );
-
         tokenA.transfer(address(this), _amountA);
         tokenB.transfer(address(this), _amountB);
 
-        uint lpTokenAmount;
+        product.add(_amountA.mul(_amountB));
 
-        if(totalSupply() == 0 ){
-            lpTokenAmount = _amountA;
-        }
-        else{
-            lpTokenAmount = _amountA.mul(totalSupply()).div(tokenA.balanceOf(address(this)));
-        }
-
-        _mint(msg.sender, lpTokenAmount);
+        //Todo: add lp token functionality
 
     }
 
-    function removeLiquidity() external{
+    function removeLiquidity(uint _lpTokenAmount) external{
 
     }
 }
