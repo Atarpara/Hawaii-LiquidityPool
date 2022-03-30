@@ -9,11 +9,7 @@
 
 </div>
 <br>
-<div align="center">
-  
-   ![tests](https://github.com/MatteoLeonesi/Universal-Vending-Machine/actions/workflows/animalcrossing-bank-test.yml/badge.svg)
 
-</div>
 
 
 ## About the Project 
