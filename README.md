@@ -12,12 +12,12 @@
 
 ## About the Project 
 
-This project is born to give me (and anyone who wants to contribute to the project) the possibility to learn Solidity (Defi, Ercs standards ...) and Hardhat, anyone can contribute adding a Defi, NFT functionality or improve one that already exists. You can create new tokens, or use existing ones to create new contracts and functions(tested with hardhat is better).
+This project is born to give me (and anyone who wants to contribute to the project) the possibility to learn Solidity (Defi, Ercs standards ...) and Hardhat, anyone can contribute adding by Defi, NFT functionality or improve one that already exists. You can create new tokens, or use existing ones to create new contracts and functions(tested with hardhat is better).
 
 ### Guide To Contribute :
 
-- if you create a token, call it with a name of a Hawaiian city
-- if you create a new functionalities that already exists (and you don't want to improve it) call your new functionalities in this way: "functionalityname_yourname".
+- if you want to create token (and you don't want to use the existing ones), call it with a name of a Hawaiian city
+- if you want to create functionalities that already exists (and you don't want to improve it) call your new functionalities in this way: "functionalityname_yourname".
 - add comment if needed.
 - follow the "contributing“ section in the readme.md.
 
