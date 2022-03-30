@@ -1,30 +1,22 @@
-// We require the Hardhat Runtime Environment explicitly here. This is optional
-// but useful for running the script in a standalone fashion through `node <script>`.
-//
-// When running the script with `npx hardhat run <script>` you'll find the Hardhat
-// Runtime Environment's members available in the global scope.
-const hre = require("hardhat");
-
 async function main() {
-  // Hardhat always runs the compile task when running scripts with its command
-  // line interface.
-  //
-  // If this script is run directly using `node` you may want to call compile
-  // manually to make sure everything is compiled
-  // await hre.run('compile');
-
-  // We get the contract to deploy
-  const Greeter = await hre.ethers.getContractFactory("Greeter");
-  const greeter = await Greeter.deploy("Hello, Hardhat!");
-
-  await greeter.deployed();
-
-  console.log("Greeter deployed to:", greeter.address);
+  const LuluToken = await hre.ethers.getContractFactory("LuluToken");
+  const VolcanoToken = await hre.ethers.getContractFactory("VolcanoToken");
+  const SwapErc20 = await hre.ethers.getContractFactory("SwapErc20");
+  console.log('Deploying contracts...');
+  const luluToken = await LuluToken.deploy();
+  await LuluToken.deployed();
+  const volcanoToken = await VolcanoToken.deploy();
+  await VolcanoToken.deployed();
+  const swapErc20 = await TomNookATM.deploy(luluToken.address, volcanoToken.address);
+  await swapErc20.deployed();
+  console.log("Bells token deployed at:", luluToken.address);
+  console.log("Miles token deployed at:", volcanoToken.address);
+  console.log("TomNookATM deployed to:", swapErc20.address);
 }
 
-// We recommend this pattern to be able to use async/await everywhere
-// and properly handle errors.
-main().catch((error) => {
-  console.error(error);
-  process.exitCode = 1;
-});
+main()
+  .then(() => process.exit(0))
+  .catch((error) => {
+    console.error(error);
+    process.exit(1);
+  });

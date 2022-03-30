@@ -10,6 +10,7 @@ contract SwapErc20 {
     IERC20 Honululu;
     address ownerHonululu;
 
+    //example: deploy VolcanoToken with ownerVulcano, after that approve the swap address using ownerVulcano in the VolcanoToken contract
     constructor(
         address _Volcano,
         address _Honululu,
