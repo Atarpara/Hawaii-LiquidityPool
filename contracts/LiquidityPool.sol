@@ -63,16 +63,31 @@ contract LiquidityPool is ERC20{
             "invalid token"
         );
 
+        uint lpTokenAmount;
+
+        //Check token ratio correct
+        if (product != 0){
+            require(
+                _amountA.mul(1e18).div(_amountB) == tokenA.balanceOf(address(this)).mul(1e18).div(tokenB.balanceOf(address(this)))
+            );
+        }
+
         tokenA.transfer(address(this), _amountA);
         tokenB.transfer(address(this), _amountB);
 
-        product.add(_amountA.mul(_amountB));
-
-        //Todo: add lp token functionality
-
+        product = product.add(_amountA.mul(_amountB));
+        lpTokenAmount = _amountA.mul(_amountB).div(1e18);
+        _mint(msg.sender, lpTokenAmount);
     }
 
     function removeLiquidity(uint _lpTokenAmount) external{
+        _burn(msg.sender, _lpTokenAmount);
+        //Calculate amount of tokens to send to user
+        uint userShare = _lpTokenAmount.mul(1e18).div(totalSupply());
+        uint amountA = userShare.mul(tokenA.balanceOf(address(this))).div(1e18);
+        uint amountB = userShare.mul(tokenB.balanceOf(address(this))).div(1e18);
 
+        tokenA.transfer(msg.sender, amountA);
+        tokenB.transfer(msg.sender, amountB);
     }
 }
